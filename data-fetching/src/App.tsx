@@ -58,6 +58,7 @@ export default function App() {
       <div>
         <button
           type="button"
+          disabled={page <= 1}
           onClick={() => setPage(page - 1)}
           style={{ marginRight: '10px' }}
         >
