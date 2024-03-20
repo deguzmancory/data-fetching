@@ -50,12 +50,14 @@ export default function App() {
   }
 
   return (
-    <div>
-      <h1>Data fetching in React</h1>
-      <div style={{ marginBottom: '20px' }}>
-        Page: {page}
-      </div>
-      <div>
+    <main>
+      <header>
+        <h1>Data fetching in React</h1>
+      </header>
+      <nav style={{ marginBottom: '20px' }}>
+        <p>
+          Page: {page}
+        </p>
         <button
           type="button"
           disabled={page <= 1}
@@ -71,21 +73,36 @@ export default function App() {
         >
           Next Page
         </button>
-      </div>
-      <div>
+      </nav>
+      <section>
         {isLoading && <span>Loading...</span>}
-      </div>
-      <div>
+      </section>
+      <section
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}
+      >
         {
           images.map((image) => (
-            <img
-              src={image.download_url}
-              alt={image.author} key={image.id}
-              style={{ width: '300px', height: '300px', margin: '20px' }}
-            />
+            <figure key={image.id}>
+              <img
+                className='imageFigure'
+                src={image.download_url}
+                alt={image.author} key={image.id}
+                style={{
+                  width: '300px',
+                  height: '300px',
+                  margin: '20px',
+                  objectFit: 'cover',
+                  borderRadius: '10px',
+                }}
+              />
+            </figure>
           ))
         }
-      </div>
-    </div >
+      </section>
+    </main>
   );
 }
